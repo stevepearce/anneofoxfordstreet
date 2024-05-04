@@ -4,16 +4,31 @@ interface Props {
 }
 
 const { title } = Astro.props;
+
+const description = "Personal homepage of Anne Young, writer";
+const keywords = [
+  "writing",
+  "english",
+  "history",
+  "literature",
+  "true crime",
+  "pop culture",
+  "nineteenth-century"
+]
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content="Astro description" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
+
+    <meta name="description" content={description} />
+    <meta name="od:description" content={description} />
+    <meta name="keywords" content ={keywords} />
+
     <title>{title}</title>
   </head>
   <body>
