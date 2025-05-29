@@ -13,8 +13,8 @@ const keywords = [
   "literature",
   "true crime",
   "pop culture",
-  "nineteenth-century"
-]
+  "nineteenth-century",
+];
 ---
 
 <!doctype html>
@@ -27,7 +27,7 @@ const keywords = [
 
     <meta name="description" content={description} />
     <meta name="od:description" content={description} />
-    <meta name="keywords" content ={keywords.join(",")} />
+    <meta name="keywords" content={keywords.join(",")} />
 
     <title>{title}</title>
   </head>
@@ -37,9 +37,10 @@ const keywords = [
 </html>
 <style is:global>
   :root {
-    --accent: 136, 58, 234;
-    --accent-light: 224, 204, 250;
-    --accent-dark: 49, 10, 101;
+    /* Neutral Blue-Grey Accent Colors */
+    --accent: 96, 125, 139; /* A muted blue-grey */
+    --accent-light: 196, 214, 222; /* Lighter shade for gradients/highlights */
+    --accent-dark: 69, 90, 100; /* Darker shade for hover/stronger emphasis */
     --accent-gradient: linear-gradient(
       45deg,
       rgb(var(--accent)),
@@ -50,7 +51,6 @@ const keywords = [
   html {
     font-family: GothamBook, Arial, Helvetica, sans-serif;
     background: white;
-    background-size: 224px;
   }
   code {
     font-family:

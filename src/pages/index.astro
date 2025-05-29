@@ -1,24 +1,78 @@
 ---
 import Layout from "../layouts/Layout.astro";
+// Import your image. Make sure the path is correct.
+// For example, if 'anne-young-headshot.jpg' is in a folder named 'assets' inside 'src', it would be '../assets/anne-young-headshot.jpg'
+import headshot from "../assets/anne2.jpg";
 ---
 
 <Layout title="Anne Young">
   <main>
     <h1>Anne Young</h1>
+    <img
+      src={headshot.src}
+      alt="Anne Young professional headshot"
+      class="headshot"
+    />
     <ul>
       <li><a href="https://anneofoxfordstreet.blogspot.com">Blog</a></li>
-      <li><a href="mailto:anneofoxfordstreet@gmail.com" target="_blank">Contact</a></li>
+      <li>
+        <a href="mailto:anneofoxfordstreet@gmail.com" target="_blank">Contact</a
+        >
+      </li>
     </ul>
   </main>
 </Layout>
-
 <style>
   main {
     margin: auto;
-    padding: 1rem;
+    padding: 2rem; /* Increased padding for better spacing */
     width: 800px;
-    max-width: calc(100% - 2rem);
-    font-size: 20px;
-    line-height: 1.6;
+    max-width: calc(
+      100% - 4rem
+    ); /* Adjusted max-width to account for increased padding */
+    font-size: 1.15rem; /* Slightly larger font for improved readability */
+    line-height: 1.7; /* Increased line height for better text flow */
+    text-align: center; /* Centers the heading, image, and list */
+    background-color: #ffffff; /* Explicitly set a white background */
+    border-radius: 8px; /* Slightly rounded corners for a softer look */
+    /* box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); /* Removed the subtle shadow for depth */
+  }
+
+  h1 {
+    font-size: 3rem; /* Larger heading for emphasis */
+    margin-bottom: 1.5rem; /* More space below the heading */
+    color: #333; /* Darker text for better contrast */
+  }
+
+  .headshot {
+    width: 200px; /* Set a fixed width for the image */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 10px; /* Softly rounded corners for the square */
+    object-fit: cover; /* Ensures the image covers the area without distortion */
+    border: 3px solid rgb(var(--accent)); /* A thin border using your accent color */
+    margin-bottom: 2.5rem; /* Increased space below the image */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* A subtle shadow for the image (kept for the image itself) */
+  }
+
+  ul {
+    list-style: none; /* Removes bullet points */
+    padding: 0;
+    margin-top: 1.5rem; /* Space above the list */
+  }
+
+  li {
+    margin-bottom: 0.8rem; /* Space between list items */
+  }
+
+  a {
+    color: rgb(var(--accent)); /* Uses your defined accent color */
+    text-decoration: none; /* Removes underline by default */
+    font-weight: 500; /* Slightly bolder links */
+    transition: color 0.3s ease; /* Smooth transition for hover effect */
+  }
+
+  a:hover {
+    color: rgb(var(--accent-dark)); /* Darker accent on hover */
+    text-decoration: underline; /* Underline on hover for interactivity */
   }
 </style>
