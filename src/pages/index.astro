@@ -55,28 +55,7 @@ import headshot from "../assets/anne2.jpg";
 
   .image-container {
     margin-bottom: 3rem;
-    position: relative;
     display: inline-block;
-  }
-
-  .image-container::after {
-    content: '';
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    right: -10px;
-    bottom: -10px;
-    border: 1px solid rgba(var(--accent), 0.1);
-    border-radius: 10px;
-    z-index: -1;
-    transition: all 0.3s ease;
-  }
-
-  .image-container:hover::after {
-    top: 15px;
-    left: 15px;
-    right: -15px;
-    bottom: -15px;
   }
 
   .headshot {
@@ -85,7 +64,6 @@ import headshot from "../assets/anne2.jpg";
     object-fit: cover;
     border-radius: 10px;
     filter: contrast(1.05);
-    transition: transform 0.3s ease;
   }
 
   .links {
