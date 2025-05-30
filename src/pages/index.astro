@@ -3,6 +3,7 @@ import Layout from "../layouts/Layout.astro";
 // Import your image. Make sure the path is correct.
 // For example, if 'anne-young-headshot.jpg' is in a folder named 'assets' inside 'src', it would be '../assets/anne-young-headshot.jpg'
 import headshot from "../assets/anne3.jpg";
+import { BookBookmark, EnvelopeSimple } from "@phosphor-icons/react";
 ---
 
 <Layout title="Anne Young">
@@ -18,9 +19,11 @@ import headshot from "../assets/anne3.jpg";
       </div>
       <nav class="links">
         <a href="https://anneofoxfordstreet.blogspot.com" class="link-item">
+          <BookBookmark size={20} weight="regular" className="icon" />
           <span class="link-text">Blog</span>
         </a>
         <a href="mailto:anneofoxfordstreet@gmail.com" class="link-item">
+          <EnvelopeSimple size={20} weight="regular" className="icon" />
           <span class="link-text">Contact</span>
         </a>
       </nav>
@@ -77,12 +80,14 @@ import headshot from "../assets/anne3.jpg";
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 0.5rem;
     padding: 0.75rem 1.5rem;
     text-decoration: none;
     border: 1px solid rgba(var(--accent), 0.1);
     border-radius: 8px;
     transition: all 0.3s ease;
     background: rgba(255, 255, 255, 0.5);
+    color: rgb(var(--link));
   }
 
   .link-item:hover {
@@ -92,9 +97,12 @@ import headshot from "../assets/anne3.jpg";
   }
 
   .link-text {
-    color: rgb(var(--link));
     font-weight: 500;
     font-size: 1.1rem;
+  }
+
+  .icon {
+    color: currentColor;
   }
 
   @keyframes fadeIn {
