@@ -15,6 +15,19 @@ const keywords = [
   "pop culture",
   "nineteenth-century",
 ];
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Anne Young",
+  "url": "https://anneofoxfordstreet.com",
+  "image": "https://anneofoxfordstreet.com/assets/anne3.jpg",
+  "sameAs": [
+    "https://anneofoxfordstreet.blogspot.com"
+  ],
+  "jobTitle": "Writer",
+  "description": description
+};
 ---
 
 <!doctype html>
@@ -24,9 +37,30 @@ const keywords = [
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
+    
+    <!-- Primary Meta Tags -->
+    <title>{title} - Writer & Historian | Anne of Oxford Street</title>
+    <meta name="title" content={`${title} - Writer & Historian | Anne of Oxford Street`} />
     <meta name="description" content={description} />
     <meta name="keywords" content={keywords.join(", ")} />
-    <title>{title}</title>
+    <meta name="author" content="Anne Young" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://anneofoxfordstreet.com/" />
+    <meta property="og:title" content={`${title} - Writer & Historian | Anne of Oxford Street`} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content="https://anneofoxfordstreet.com/assets/anne3.jpg" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://anneofoxfordstreet.com/" />
+    <meta property="twitter:title" content={`${title} - Writer & Historian | Anne of Oxford Street`} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content="https://anneofoxfordstreet.com/assets/anne3.jpg" />
+
+    <!-- Structured Data -->
+    <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
 
     <!-- Preload critical assets -->
     <link rel="preload" href="/assets/anne3.jpg" as="image" />
