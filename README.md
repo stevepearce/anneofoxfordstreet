@@ -52,3 +52,12 @@ All commands are run from the root of the project, from a terminal:
 ## 👀 Want to learn more?
 
 Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+
+# Anne of Oxford Street
+
+Personal website for Anne Young.
+
+## Recent Updates
+- Added navigation icons for improved user experience
+- Improved typography and styling
+- Mobile-responsive design
