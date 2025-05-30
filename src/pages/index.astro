@@ -1,9 +1,8 @@
 ---
 import Layout from "../layouts/Layout.astro";
-// Import your image. Make sure the path is correct.
-// For example, if 'anne-young-headshot.jpg' is in a folder named 'assets' inside 'src', it would be '../assets/anne-young-headshot.jpg'
+import { Image } from "astro:assets";
 import headshot from "../assets/anne3.jpg";
-import { BookBookmark, EnvelopeSimple } from "@phosphor-icons/react";
+import { Book, Mail } from "lucide-astro";
 ---
 
 <Layout title="Anne Young">
@@ -11,19 +10,23 @@ import { BookBookmark, EnvelopeSimple } from "@phosphor-icons/react";
     <div class="content">
       <h1>Anne Young</h1>
       <div class="image-container">
-        <img
-          src={headshot.src}
+        <Image
+          src={headshot}
           alt="Anne Young professional headshot"
           class="headshot"
+          width={240}
+          height={240}
+          loading="eager"
+          decoding="sync"
         />
       </div>
       <nav class="links">
         <a href="https://anneofoxfordstreet.blogspot.com" class="link-item">
-          <BookBookmark size={20} weight="regular" className="icon" />
+          <Book class="icon" size={20} aria-hidden="true" />
           <span class="link-text">Blog</span>
         </a>
         <a href="mailto:anneofoxfordstreet@gmail.com" class="link-item">
-          <EnvelopeSimple size={20} weight="regular" className="icon" />
+          <Mail class="icon" size={20} aria-hidden="true" />
           <span class="link-text">Contact</span>
         </a>
       </nav>
