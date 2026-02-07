@@ -1,0 +1,217 @@
+---
+const pathname = new URL(Astro.request.url).pathname;
+---
+
+<nav class="nav-container">
+  {/* Desktop Navigation */}
+  <div class="desktop-nav">
+    <ul class="nav-items">
+      <li>
+        <a href="/" class={`nav-link ${pathname === "/" ? "active" : ""}`}>
+          Home
+        </a>
+      </li>
+      <li>
+        <a
+          href="/research"
+          class={`nav-link ${pathname === "/research" ? "active" : ""}`}
+        >
+          Research
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  {/* Mobile Navigation */}
+  <button class="mobile-menu-toggle" aria-label="Toggle menu">
+    <span class="hamburger"></span>
+  </button>
+
+  <div class="mobile-nav">
+    <ul class="nav-items">
+      <li>
+        <a href="/" class={`nav-link ${pathname === "/" ? "active" : ""}`}>
+          Home
+        </a>
+      </li>
+      <li>
+        <a
+          href="/research"
+          class={`nav-link ${pathname === "/research" ? "active" : ""}`}
+        >
+          Research
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<style>
+  .nav-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+  }
+
+  /* Desktop Navigation Styles */
+  .desktop-nav {
+    display: none;
+    width: 200px;
+    height: 100vh;
+    background: white;
+    border-right: 1px solid rgba(var(--accent), 0.1);
+    padding: 2rem 0;
+  }
+
+  .nav-items {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .nav-link {
+    display: block;
+    padding: 0.75rem 2rem;
+    color: rgb(var(--accent));
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+  }
+
+  .nav-link:hover,
+  .nav-link.active {
+    background: rgba(var(--accent), 0.05);
+    color: rgb(var(--accent-light));
+  }
+
+  /* Mobile Navigation Styles */
+  .mobile-menu-toggle {
+    display: none;
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    width: 40px;
+    height: 40px;
+    padding: 8px;
+    background: #f9f9f9;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    z-index: 1002;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hamburger,
+  .hamburger::before,
+  .hamburger::after {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: rgb(var(--accent));
+    transition: all 0.3s ease;
+  }
+
+  .hamburger {
+    position: relative;
+  }
+
+  .hamburger::before,
+  .hamburger::after {
+    content: "";
+    position: absolute;
+    left: 0;
+  }
+
+  .hamburger::before {
+    top: -8px;
+  }
+
+  .hamburger::after {
+    bottom: -8px;
+  }
+
+  .mobile-nav {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: white;
+    padding: 5rem 2rem 2rem;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+  }
+
+  .mobile-nav .nav-items {
+    text-align: center;
+  }
+
+  .mobile-nav .nav-link {
+    font-size: 1.5rem;
+    padding: 1rem 2rem;
+  }
+
+  /* Desktop Media Query */
+  @media (min-width: 769px) {
+    .desktop-nav {
+      display: block;
+    }
+  }
+
+  /* Mobile Media Query */
+  @media (max-width: 768px) {
+    .mobile-menu-toggle {
+      display: flex;
+    }
+
+    .mobile-nav {
+      display: block;
+    }
+
+    .mobile-nav.active {
+      transform: translateX(0);
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Hamburger Animation */
+    .mobile-menu-toggle[aria-expanded="true"] .hamburger {
+      transform: rotate(45deg);
+    }
+
+    .mobile-menu-toggle[aria-expanded="true"] .hamburger::before {
+      transform: translateY(8px) rotate(90deg);
+    }
+
+    .mobile-menu-toggle[aria-expanded="true"] .hamburger::after {
+      transform: translateY(-8px) rotate(90deg);
+      opacity: 0;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const menuToggle = document.querySelector(".mobile-menu-toggle");
+    const mobileNav = document.querySelector(".mobile-nav");
+
+    menuToggle?.addEventListener("click", () => {
+      const isExpanded = menuToggle.getAttribute("aria-expanded") === "true";
+      menuToggle.setAttribute("aria-expanded", (!isExpanded).toString());
+      mobileNav?.classList.toggle("active");
+      document.body.style.overflow = isExpanded ? "" : "hidden";
+    });
+
+    // Close menu when clicking a link
+    document.querySelectorAll(".mobile-nav .nav-link").forEach((link) => {
+      link.addEventListener("click", () => {
+        menuToggle?.setAttribute("aria-expanded", "false");
+        mobileNav?.classList.remove("active");
+        document.body.style.overflow = "";
+      });
+    });
+  });
+</script>
